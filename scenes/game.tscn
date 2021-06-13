@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://assets/textures/diamond.png" type="Texture" id=6]
 [ext_resource path="res://scripts/foreground.gd" type="Script" id=7]
 [ext_resource path="res://assets/textures/danger.png" type="Texture" id=8]
+[ext_resource path="res://assets/buttons/go_back.png" type="Texture" id=9]
+[ext_resource path="res://scripts/restart.gd" type="Script" id=10]
+[ext_resource path="res://assets/buttons/restart.png" type="Texture" id=11]
+[ext_resource path="res://scripts/home_button.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 536.707, 32.428 )
@@ -70,3 +74,35 @@ texture = ExtResource( 8 )
 position = Vector2( 300, 246.583 )
 scale = Vector2( 12, 12 )
 texture = ExtResource( 5 )
+
+[node name="restart" type="Button" parent="foreground"]
+margin_left = 213.862
+margin_top = 398.0
+margin_right = 400.862
+margin_bottom = 576.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 11 )
+flat = true
+expand_icon = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="home" type="Button" parent="foreground"]
+margin_left = 17.5214
+margin_top = 627.331
+margin_right = 159.521
+margin_bottom = 748.331
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 9 )
+flat = true
+expand_icon = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="foreground/restart" to="foreground/restart" method="_on_restart_pressed"]
+[connection signal="pressed" from="foreground/home" to="foreground/home" method="_on_home_pressed"]

@@ -1,7 +1,7 @@
 extends Node2D
 
 var player = null
-
+var ended= false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -24,8 +24,11 @@ func add_score(_val):
 	player.death()
 
 func end_game():
+	if ended: 
+		return
 	player.death()
-	$foreground.visible = true
+	$foreground.showMe()
+	ended = true
 
 
 func create_rocket(y):
