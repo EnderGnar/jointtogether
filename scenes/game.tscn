@@ -1,6 +1,72 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://assets/background.png" type="Texture" id=2]
+[ext_resource path="res://scripts/background.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/Arcade.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/game_over.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/diamond.png" type="Texture" id=6]
+[ext_resource path="res://scripts/foreground.gd" type="Script" id=7]
+[ext_resource path="res://assets/textures/danger.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 536.707, 32.428 )
 
 [node name="world" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.529022 )
+scale = Vector2( 8, 8 )
+z_index = -1
+texture = ExtResource( 2 )
+centered = false
+
+[node name="background" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="score" type="RichTextLabel" parent="background"]
+margin_left = 125.256
+margin_top = 14.0215
+margin_right = 183.256
+margin_bottom = 54.0215
+grow_horizontal = 0
+grow_vertical = 0
+rect_scale = Vector2( 8, 8 )
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[right]10[/right]"
+text = "10"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game" type="Node2D" parent="."]
+
+[node name="Area2D" type="StaticBody2D" parent="game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game/Area2D"]
+position = Vector2( 299.76, 769.071 )
+shape = SubResource( 1 )
+
+[node name="foreground" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="diamond" type="Sprite" parent="foreground"]
+position = Vector2( 144.72, 243.541 )
+rotation = -0.234072
+scale = Vector2( 10, 10 )
+texture = ExtResource( 6 )
+
+[node name="danger" type="Sprite" parent="foreground"]
+position = Vector2( 454.014, 268.44 )
+rotation = 0.196198
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="game over" type="Sprite" parent="foreground"]
+position = Vector2( 300, 246.583 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 5 )

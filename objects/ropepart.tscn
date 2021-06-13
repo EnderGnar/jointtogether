@@ -7,6 +7,7 @@
 extents = Vector2( 5.18635, 8.03552 )
 
 [node name="ropepart" type="RigidBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +20,4 @@ texture = ExtResource( 1 )
 [node name="Pin" type="PinJoint2D" parent="."]
 position = Vector2( -0.390795, 7.50322 )
 node_a = NodePath("..")
+softness = 0.01

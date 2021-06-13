@@ -1,20 +1,81 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/start_game.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/buttons/about.png" type="Texture" id=2]
+[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://scripts/impressum.gd" type="Script" id=4]
+[ext_resource path="res://assets/buttons/go_back.png" type="Texture" id=5]
+[ext_resource path="res://assets/GMTK.png" type="Texture" id=6]
+[ext_resource path="res://scripts/mainmenu.gd" type="Script" id=7]
+[ext_resource path="res://scripts/back.gd" type="Script" id=8]
+[ext_resource path="res://assets/buttons/start.png" type="Texture" id=9]
+[ext_resource path="res://assets/about_screen.png" type="Texture" id=10]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="start" type="Button" parent="."]
-margin_top = 571.245
-margin_right = 603.0
-margin_bottom = 770.245
-icon = ExtResource( 2 )
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="start" type="Button" parent="Main"]
+margin_left = 107.966
+margin_top = 449.519
+margin_right = 467.966
+margin_bottom = 601.519
+icon = ExtResource( 9 )
 flat = true
+expand_icon = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="start" to="start" method="_on_start_pressed"]
+
+[node name="impressum" type="Button" parent="Main"]
+margin_left = 167.517
+margin_top = 629.258
+margin_right = 413.517
+margin_bottom = 734.258
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Impressum" type="Node2D" parent="."]
+position = Vector2( 600.048, 0 )
+
+[node name="back" type="Button" parent="Impressum"]
+margin_top = 1.0
+margin_right = 209.0
+margin_bottom = 119.0
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Impressum"]
+position = Vector2( 300, 262.157 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="About" type="Sprite" parent="Impressum"]
+position = Vector2( 300, 594.593 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 10 )
+[connection signal="pressed" from="Main/start" to="Main/start" method="_on_start_pressed"]
+[connection signal="pressed" from="Main/impressum" to="Main/impressum" method="_on_impressum_pressed"]
+[connection signal="pressed" from="Impressum/back" to="Impressum/back" method="_on_back_pressed"]
